@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@android:color/holo_blue_light"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:background="@color/common_top_bar_blue"
+    android:layout_alignParentRight="true"
+    >
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="尚硅谷知识库"
+        android:padding="25px"
+        android:text="微信"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:layout_toLeftOf="@+id/iv_add"
+        android:src="@drawable/icon_search" />
+
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_width="58dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:src="@drawable/main_activity_add" />
+
+
+</RelativeLayout>
