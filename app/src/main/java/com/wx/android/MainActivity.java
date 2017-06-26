@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.wx.android.adapter.MFragmentPagerAdapter;
@@ -27,6 +28,7 @@ import java.util.List;
 public class MainActivity  extends FragmentActivity {
 
     private RadioGroup mRg_main;
+
     private List<BaseFragment> mBaseFragment;
     /**
      * 页面号
@@ -36,12 +38,9 @@ public class MainActivity  extends FragmentActivity {
     /**
      * 选中的Fragment的对应的位置
      */
-    private int position;
+    private int position=0;
 
-    /**
-     * 上次切换的Fragment
-     */
-    private Fragment mContent;
+
     /**
      * 滑动
      */
@@ -50,16 +49,16 @@ public class MainActivity  extends FragmentActivity {
     private FragmentManager fragmentManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //初始化View
         initView();
         //初始化Fragment
         initFragment();
-        //设置RadioGroup的监听
-        setListener();
         //初始化ViewPager
         InitViewPager();
+        //设置RadioGroup的监听
+        setListener();
     }
 
     /**
@@ -67,11 +66,13 @@ public class MainActivity  extends FragmentActivity {
      */
     private void InitViewPager() {
 
+        fragmentManager = getSupportFragmentManager();
+
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
         mViewPager.setAdapter(new MFragmentPagerAdapter(fragmentManager, mBaseFragment));
 
         //让ViewPager缓存2个页面
-        mViewPager.setOffscreenPageLimit(2);
+        //mViewPager.setOffscreenPageLimit(2);
 
         //设置默认打开第一页
         mViewPager.setCurrentItem(0);
@@ -83,47 +84,39 @@ public class MainActivity  extends FragmentActivity {
 
 
     private void setListener() {
-        mRg_main.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        mRg_main.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                                                @Override
+                                                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                                    switch (checkedId) {
+                                                        case R.id.rb_common_frame://常用框架
+                                                            mViewPager.setCurrentItem(0);
+                                                            break;
+                                                        case R.id.rb_thirdparty://第三方
+                                                            mViewPager.setCurrentItem(1);
+                                                            break;
+                                                        case R.id.rb_custom://自定义
+                                                            mViewPager.setCurrentItem(2);
+                                                            break;
+                                                        case R.id.rb_other://其他
+                                                            mViewPager.setCurrentItem(3);
+                                                            break;
+                                                        default:
+                                                            mViewPager.setCurrentItem(0);
+                                                            break;
+                                                    }
+                                                }
+                                            });
         //设置默认选中常用框架
-        mRg_main.check(R.id.rb_common_frame);
-    }
-
-    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
-
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId) {
-                case R.id.rb_common_frame://常用框架
-                    position = 0;
-                    break;
-                case R.id.rb_thirdparty://第三方
-                    position = 1;
-                    break;
-                case R.id.rb_custom://自定义
-                    position = 2;
-                    break;
-                case R.id.rb_other://其他
-                    position = 3;
-                    break;
-                default:
-                    position = 0;
-                    break;
-            }
-
-            //根据位置得到对应的Fragment
-            BaseFragment to = getFragment();
-            //替换
-            switchFrament(mContent, to);
-
-        }
+        //mRg_main.check(R.id.rb_common_frame);
     }
 
 
-    /**
-     * @param from 刚显示的Fragment,马上就要被隐藏了
-     * @param to   马上要切换到的Fragment，一会要显示
-     */
-    private void switchFrament(Fragment from, Fragment to) {
+
+
+     //@param from 刚显示的Fragment,马上就要被隐藏了
+     //@param to   马上要切换到的Fragment，一会要显示
+
+/*    private void switchFrament(Fragment from, Fragment to) {
         if (from != to) {
             mContent = to;
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -152,7 +145,7 @@ public class MainActivity  extends FragmentActivity {
             }
         }
 
-    }
+    }*/
 
 //    private void switchFrament(BaseFragment fragment) {
 //        //1.得到FragmentManger
@@ -164,8 +157,7 @@ public class MainActivity  extends FragmentActivity {
 //        //4.提交事务
 //        transaction.commit();
 //    }
-
-    /**
+   /**
      * 根据位置得到对应的Fragment
      *
      * @return
@@ -182,7 +174,7 @@ public class MainActivity  extends FragmentActivity {
         mBaseFragment.add(new CustomFragment());//自定义控件Fragment
         mBaseFragment.add(new OtherFragment());//其他Fragment
 
-        fragmentManager = getSupportFragmentManager();
+
     }
 
     private void initView() {
@@ -198,45 +190,51 @@ public class MainActivity  extends FragmentActivity {
      * @author weizhi
      * @version 1.0
      */
-    public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+   public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
         public void onPageSelected(int position) {
+            RadioButton mButton1 = (RadioButton)findViewById(R.id.rb_common_frame);
+            RadioButton mButton2 = (RadioButton)findViewById(R.id.rb_thirdparty);
+            RadioButton mButton3 = (RadioButton)findViewById(R.id.rb_custom);
+            RadioButton mButton4 = (RadioButton)findViewById(R.id.rb_other);
 
             switch (position) {
 
                 //当前为页卡1
                 case 0:
-                    //从页卡1跳转转到页卡2
-                    if (currIndex == 1) {
+                    mButton1.setChecked(true);
+                    mButton2.setChecked(false);
+                    mButton3.setChecked(false);
+                    mButton4.setChecked(false);
 
-
-                    } else if (currIndex == 2) {//从页卡1跳转转到页卡3
-
-                    }
                     break;
 
                 //当前为页卡2
                 case 1:
-                    //从页卡1跳转转到页卡2
-                    if (currIndex == 0) {
+                    mButton1.setChecked(false);
+                    mButton2.setChecked(true);
+                    mButton3.setChecked(false);
+                    mButton4.setChecked(false);
 
-                    } else if (currIndex == 2) { //从页卡1跳转转到页卡2
-
-                    }
                     break;
 
                 //当前为页卡3
                 case 2:
-                    //从页卡1跳转转到页卡2
-                    if (currIndex == 0) {
+                    mButton1.setChecked(false);
+                    mButton2.setChecked(false);
+                    mButton3.setChecked(true);
+                    mButton4.setChecked(false);
+                    break;
 
-                    } else if (currIndex == 1) {//从页卡1跳转转到页卡2
-
-                    }
+                case 3:
+                    mButton1.setChecked(false);
+                    mButton2.setChecked(false);
+                    mButton3.setChecked(false);
+                    mButton4.setChecked(true);
                     break;
             }
-            currIndex = position;
+
 
         }
 

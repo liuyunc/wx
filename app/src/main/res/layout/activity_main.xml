@@ -2,18 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <!--标题栏-->
     <include layout="@layout/titlebar" />
 
     <!--FrameLayout-->
 
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1" />-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="343dp"
+
+        android:layout_weight="0.97" />
 
     <!--底部的RadioGroup-->
     <RadioGroup
@@ -56,12 +64,6 @@
 
 
     </RadioGroup>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/id_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
 
 
 </LinearLayout>
