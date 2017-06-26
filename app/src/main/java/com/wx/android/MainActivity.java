@@ -1,11 +1,15 @@
 package com.wx.android;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -15,6 +19,7 @@ import com.wx.android.fragment.CommonFrameFragment;
 import com.wx.android.fragment.CustomFragment;
 import com.wx.android.fragment.OtherFragment;
 import com.wx.android.fragment.ThirdPartyFragment;
+import com.wx.android.fx.AddPopWindow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +34,16 @@ public class MainActivity  extends FragmentActivity {
 
     private RadioGroup mRg_main;
 
+    /**
+    * 菜单
+    * */
+    private ImageView iv_add;
+
     private List<BaseFragment> mBaseFragment;
     /**
      * 页面号
      */
-    private int currIndex = 0;
+
 
     /**
      * 选中的Fragment的对应的位置
@@ -59,6 +69,17 @@ public class MainActivity  extends FragmentActivity {
         InitViewPager();
         //设置RadioGroup的监听
         setListener();
+        iv_add = (ImageView) this.findViewById(R.id.iv_add);
+        iv_add.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AddPopWindow addPopWindow = new AddPopWindow(MainActivity.this);
+                addPopWindow.showPopupWindow(iv_add);
+            }
+
+        });
+
     }
 
     /**
@@ -71,8 +92,6 @@ public class MainActivity  extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
         mViewPager.setAdapter(new MFragmentPagerAdapter(fragmentManager, mBaseFragment));
 
-        //让ViewPager缓存2个页面
-        //mViewPager.setOffscreenPageLimit(2);
 
         //设置默认打开第一页
         mViewPager.setCurrentItem(0);
@@ -106,8 +125,6 @@ public class MainActivity  extends FragmentActivity {
                                                     }
                                                 }
                                             });
-        //设置默认选中常用框架
-        //mRg_main.check(R.id.rb_common_frame);
     }
 
 
@@ -180,6 +197,8 @@ public class MainActivity  extends FragmentActivity {
     private void initView() {
         setContentView(R.layout.activity_main);
         mRg_main = (RadioGroup) findViewById(R.id.rg_main);
+
+
 
     }
 
