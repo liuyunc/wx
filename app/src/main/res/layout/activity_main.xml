@@ -2,18 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <!--标题栏-->
     <include layout="@layout/titlebar" />
 
     <!--FrameLayout-->
 
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1" />-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="343dp"
+
+        android:layout_weight="0.97" />
 
     <!--底部的RadioGroup-->
     <RadioGroup
@@ -30,7 +38,7 @@
             android:id="@+id/rb_common_frame"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_common_frame_drawable_selector"
-            android:text="常用框架"
+            android:text="微信"
 
             />
 
@@ -38,7 +46,7 @@
             android:id="@+id/rb_thirdparty"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_thirdparty_drawable_selector"
-            android:text="第三方"
+            android:text="通讯录"
 
             />
 
@@ -46,13 +54,13 @@
             android:id="@+id/rb_custom"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_custom_drawable_selector"
-            android:text="自定义控件" />
+            android:text="发现" />
 
         <RadioButton
             android:id="@+id/rb_other"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_other_drawable_selector"
-            android:text="其他" />
+            android:text="我" />
 
 
     </RadioGroup>
