@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    >
 
     <!--标题栏-->
     <include layout="@layout/titlebar" />
@@ -21,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="343dp"
 
-        android:layout_weight="0.97" />
+        android:layout_weight="1.04" />
 
     <!--底部的RadioGroup-->
     <RadioGroup
