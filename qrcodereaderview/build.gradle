@@ -1,0 +1,38 @@
+
+plugins {
+  id "com.jfrog.bintray" version "1.7"
+}
+
+apply plugin: 'com.android.library'
+
+def libVersionCode = '2.0.2'
+
+group = "com.dlazaro66.qrcodereaderview"
+version = libVersionCode
+
+android {
+
+  lintOptions {
+    abortOnError false
+  }
+
+  compileSdkVersion 25
+  buildToolsVersion '25.0.2'
+
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 25
+    versionCode 1
+    versionName libVersionCode
+  }
+
+
+}
+
+dependencies {
+  compile 'com.google.zxing:core:3.2.1'
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.mockito:mockito-core:2.7.5'
+  testCompile "org.robolectric:robolectric:3.2.2"
+}
+
