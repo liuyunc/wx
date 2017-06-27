@@ -18,6 +18,9 @@ import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView.OnQRCodeReadListener;
 import com.wx.android.R;
 
+/**
+ * 扫一扫功能
+ * */
 public class DecoderActivity extends AppCompatActivity
     implements ActivityCompat.OnRequestPermissionsResultCallback, OnQRCodeReadListener {
 
@@ -80,6 +83,8 @@ public class DecoderActivity extends AppCompatActivity
   // Called when a QR is decoded
   // "text" : the text encoded in QR
   // "points" : points where QR control points are placed
+    /**
+     * 之后用二维码text实现其他功能*/
   @Override public void onQRCodeRead(String text, PointF[] points) {
     resultTextView.setText(text);
     pointsOverlayView.setPoints(points);

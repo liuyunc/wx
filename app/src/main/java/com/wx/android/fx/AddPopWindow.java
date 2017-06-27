@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import com.wx.android.R;
 
 /**
- * Created by Administrator on 2017/6/26.
+ * Created by Administrator on 2017/6/26. 加号弹窗
  */
 
 public class AddPopWindow extends PopupWindow {
