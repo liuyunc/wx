@@ -1,18 +1,15 @@
 package com.wx.android;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.wx.android.adapter.MFragmentPagerAdapter;
 import com.wx.android.base.BaseFragment;
 import com.wx.android.fragment.CommonFrameFragment;
@@ -61,6 +58,8 @@ public class MainActivity  extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //初始化数据库
+        FlowManager.init(this);
         //初始化View
         initView();
         //初始化Fragment
