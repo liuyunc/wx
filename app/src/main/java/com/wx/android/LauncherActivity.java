@@ -17,7 +17,7 @@ public class LauncherActivity extends Activity {
                 //在主线程中执行
                 startMainActivity();
             }
-        }, 3000);
+        }, 2500);
     }
 
     /**
