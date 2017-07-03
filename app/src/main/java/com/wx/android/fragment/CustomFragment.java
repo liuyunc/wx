@@ -1,11 +1,13 @@
 package com.wx.android.fragment;
 
-import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.wx.android.R;
 import com.wx.android.base.BaseFragment;
 
 /**
@@ -18,22 +20,54 @@ public class CustomFragment extends BaseFragment {
 
 
     private static final String TAG = CustomFragment.class.getSimpleName();//"CommonFrameFragment"
-    private TextView textView;
+    private Button mButton;
+    private TextView mText;
 
     @Override
     protected View initView() {
         Log.e(TAG,"自定义Fragment页面被初始化了...");
-        textView = new TextView(mContext);
-        textView.setTextSize(20);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.RED);
-        return textView;
+        View view = View.inflate(mContext, R.layout.hr_frame,null);
+         mButton= (Button) view.findViewById(R.id.h_button);
+        mText = (TextView) view.findViewById(R.id.heart);
+        final Handler handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                super.handleMessage(msg);
+                if(msg.what == 1){
+                    mText.setText("更新后");
+                }
+            }
+        };
+
+        mText.setText("更新前");
+        final Thread thread = new Thread(new Runnable(){
+
+            @Override
+            public void run() {
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
+            }
+
+        });
+        mButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                thread.start();
+            }
+        });
+
+
+
+
+        return view;
     }
 
     @Override
     protected void initData() {
         super.initData();
         Log.e(TAG, "自定义Fragment数据被初始化了...");
-        textView.setText("自定义页面");
+
     }
 }
