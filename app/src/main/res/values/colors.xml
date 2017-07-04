@@ -34,6 +34,18 @@
     <color name="gray_normal">#666667</color>
     <color name="grid_state_pressed">#1Affffff</color>
     <color name="grid_state_focused">#80000000</color>
+    <color name="red">#D95238</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_999999">#999999</color>
+
+    <color name="heart_default">#E48674</color>
+    <color name="heart_select">#E48674</color>
+
+    <color name="translucent">#10000000</color>
+
+    <color name="rippelColor">#FFFFFF</color>
+    <color name="heartbeat">#EAAD7E</color>
 
     <color name="voip_interface_text_color">#bababa</color>
     <color name="black_deep">#FF000000</color>
