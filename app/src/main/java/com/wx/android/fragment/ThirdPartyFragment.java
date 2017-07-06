@@ -2,6 +2,7 @@ package com.wx.android.fragment;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.wx.android.R;
 import com.wx.android.base.BaseFragment;
@@ -18,16 +19,20 @@ public class ThirdPartyFragment extends BaseFragment {
 
     private static final String TAG = ThirdPartyFragment.class.getSimpleName();//"CommonFrameFragment"
     RingView mringView;
+    private TextView mText;
 
     @Override
     protected View initView() {
         Log.e(TAG,"第三方Fragment页面被初始化了...");
         View view = View.inflate(mContext, R.layout.activity_heart,null);
         mringView =(RingView) view.findViewById(R.id.ringView);
+        mText = (TextView) view.findViewById(R.id.hrtextView);
         view.findViewById(R.id.startHeartBeatTest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mringView.startAnim();
+                mText.setText("60");
+
             }
         });
 

@@ -257,6 +257,8 @@ public class RingView extends View {
             canvas.drawCircle(mHeartBeatWidth+20+mHeartPaintWidth, mTotalHeight/2-mOriginalYPositon[mOffset], 10, mHeartBeatPaint);
         }
 
+
+
 		/*-------------通过drawPoint方法绘制 会降低性能--------------------*/
 	/*	if(StartHeartBeatAnmiFlag){
 			//绘制心跳线
