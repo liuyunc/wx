@@ -93,7 +93,7 @@ public class MainActivity  extends FragmentActivity {
 
 
         //设置默认打开第一页
-        mViewPager.setCurrentItem(0);
+        mViewPager.setCurrentItem(0,false);
 
 
         //设置viewpager页面滑动监听事件
@@ -107,19 +107,19 @@ public class MainActivity  extends FragmentActivity {
                                                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                                                     switch (checkedId) {
                                                         case R.id.rb_common_frame://常用框架
-                                                            mViewPager.setCurrentItem(0);
+                                                            mViewPager.setCurrentItem(0,false);
                                                             break;
                                                         case R.id.rb_thirdparty://第三方
-                                                            mViewPager.setCurrentItem(1);
+                                                            mViewPager.setCurrentItem(1,false);
                                                             break;
                                                         case R.id.rb_custom://自定义
-                                                            mViewPager.setCurrentItem(2);
+                                                            mViewPager.setCurrentItem(2,false);
                                                             break;
                                                         case R.id.rb_other://其他
-                                                            mViewPager.setCurrentItem(3);
+                                                            mViewPager.setCurrentItem(3,false);
                                                             break;
                                                         default:
-                                                            mViewPager.setCurrentItem(0);
+                                                            mViewPager.setCurrentItem(0,false);
                                                             break;
                                                     }
                                                 }
