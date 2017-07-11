@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.wx.android.adapter.MFragmentPagerAdapter;
 import com.wx.android.base.BaseFragment;
@@ -59,7 +60,7 @@ public class MainActivity  extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //初始化数据库
-        FlowManager.init(this);
+        FlowManager.init(new FlowConfig.Builder(this).build());
         //初始化View
         initView();
         //初始化Fragment

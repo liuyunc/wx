@@ -5,12 +5,16 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wx.android.R;
+import com.wx.android.adapter.CommonFrameFragmentAdapter;
 import com.wx.android.base.BaseFragment;
+import com.wx.android.basement.Health;
 import com.wx.android.fx.RingView;
 
+import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,20 +30,58 @@ public class ThirdPartyFragment extends BaseFragment {
     private static final String TAG = ThirdPartyFragment.class.getSimpleName();//"CommonFrameFragment"
     RingView mringView;
     private TextView mText;
-    int j=0;
+    private ListView mListView; //心率历史记录
+    private CommonFrameFragmentAdapter adapter;
+    private String[] datas;
+    Health info=new Health();
+    //ModelAdapter<Health> adapters = FlowManager.getModelAdapter(Health.class);
+
+    LinkedList list = new LinkedList(); //历史纪录的队列
+
+
+
+
     Handler handler=new Handler(){
       @Override
         public void handleMessage(Message msg){
           super.handleMessage(msg);
-
-          char i=60;
           String s;
           if(msg.what==0x123){
+              int i=(int) (Math.random()*100);
+              s=String.valueOf(i);
+              if(list.size()<=5) {
+                  list.addFirst(i);
+              }else{
+                  list.addFirst(i);
+                  list.removeLast();
+              }
+              if(list.get(0)!=null) {
+                  info.hr = (int) list.get(0);
+              }
+              if(list.get(1)!=null){
+                  info.hr1= (int)list.get(1);
+              }
+              if(list.get(2)!=null) {
+                  info.hr2 = (int) list.get(2);
+              }
+              if(list.get(3)!=null) {
+                  info.hr3 = (int) list.get(3);
+              }
+              if(list.get(4)!=null) {
+                  info.hr4 = (int) list.get(4);
+              }
 
-                  s=String.valueOf(i+j);
-                  mText.setText(s);
-                  mText.setTextSize(90);
-                  mText.setTextColor(Color.WHITE);
+
+              //adapters.update(info);
+              info.update();
+              datas = new String[]{String.valueOf(info.hr),String.valueOf(info.hr1),String.valueOf(info.hr2),String.valueOf(info.hr3),String.valueOf(info.hr4)};
+              //设置适配器
+              adapter = new CommonFrameFragmentAdapter(mContext,datas);
+              mListView.setAdapter(adapter);
+
+              mText.setText(s);
+              mText.setTextSize(90); //心跳数字格式
+              mText.setTextColor(Color.WHITE);
           }
       }
     };
@@ -61,6 +103,8 @@ public class ThirdPartyFragment extends BaseFragment {
         View view = View.inflate(mContext, R.layout.activity_heart,null);
         mringView =(RingView) view.findViewById(R.id.ringView);
         mText = (TextView) view.findViewById(R.id.hrtextView);
+        mListView = (ListView) view.findViewById(R.id.listview_hr);
+
         view.findViewById(R.id.startHeartBeatTest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +133,24 @@ public class ThirdPartyFragment extends BaseFragment {
     protected void initData() {
         super.initData();
         Log.e(TAG, "第三方Fragment数据被初始化了...");
+
+
+        info.hid=1;
+        info.hr=0;
+        info.hr1=0;
+        info.hr2=0;
+        info.hr3=0;
+        info.hr4=0;
+        //adapters.insert(info);
+
+        list.add(0);
+        list.add(0);
+        list.add(0);
+        list.add(0);
+        list.add(0);
+
+
+
 
 
     }

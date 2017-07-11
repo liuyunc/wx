@@ -6,12 +6,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.raizlabs.android.dbflow.config.FlowManager;
-import com.raizlabs.android.dbflow.structure.ModelAdapter;
 import com.wx.android.R;
 import com.wx.android.adapter.CommonFrameFragmentAdapter;
 import com.wx.android.base.BaseFragment;
-import com.wx.android.basement.Health;
 import com.wx.android.basement.User;
 
 import java.util.UUID;
@@ -53,9 +50,7 @@ public class CommonFrameFragment extends BaseFragment {
         super.initData();
         Log.e(TAG, "常用框架Fragment数据被初始化了...");
         //准备数据
-        Health info=new Health();
-        info.hid=1;
-        info.hr=70;
+
 
         User user=new User();
         user.id = UUID.randomUUID();
@@ -63,11 +58,12 @@ public class CommonFrameFragment extends BaseFragment {
         user.age = 27;
         user.hid=1;
 
-        ModelAdapter<User> adapters = FlowManager.getModelAdapter(User.class);
-        adapters.insert(user);
-
+        //ModelAdapter<User> adapters = FlowManager.getModelAdapter(User.class);
+        //adapters.insert(user);
+        user.insert();
         user.name = "Not Andrew Grosner";
-        adapters.update(user);
+        //adapters.update(user);
+        user.update();
         datas = new String[]{user.name};
         //设置适配器
         adapter = new CommonFrameFragmentAdapter(mContext,datas);

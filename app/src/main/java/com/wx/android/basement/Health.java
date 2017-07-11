@@ -16,5 +16,17 @@ public class Health extends BaseModel {
     @Column
     public int hr;  //心率
 
+    @Column
+    public int hr1;  //心率1
+
+    @Column
+    public int hr2;  //心率2
+
+    @Column
+    public int hr3;  //心率3
+
+    @Column
+    public int hr4;  //心率4
+
 
 }

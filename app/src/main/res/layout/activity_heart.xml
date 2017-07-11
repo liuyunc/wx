@@ -64,4 +64,15 @@
             />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+         >
+        <ListView
+            android:id="@+id/listview_hr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+    </RelativeLayout>
+
 </LinearLayout>
