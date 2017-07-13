@@ -1,9 +1,12 @@
 package com.wx.android;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -267,4 +270,46 @@ public class MainActivity  extends FragmentActivity {
 
         }
     }
+
+    /*返回键退出确认*/
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK )
+        {
+
+            //Toast.makeText(MainActivity.this, "点击返回键", Toast.LENGTH_SHORT).show();
+            // 创建退出对话框
+            AlertDialog isExit = new AlertDialog.Builder(this).create();
+            // 设置对话框消息
+            isExit.setMessage("确定要退出吗");
+            // 添加选择按钮并注册监听
+            isExit.setButton(DialogInterface.BUTTON_NEGATIVE,"取消", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }
+            );
+            isExit.setButton(DialogInterface.BUTTON_POSITIVE,"确定", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // stopPaintTimer();
+                    /**if(CONNECT_STATE==CONNECT_SUCCESS){
+                        BTConnectThread.cancel();
+
+                    }
+                    */
+
+                    finish();
+                }
+            });
+            isExit.show();
+        }
+        return false;
+    }
+
+
 }
