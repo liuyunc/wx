@@ -43,10 +43,8 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * 作者：尚硅谷-杨光福 on 2016/7/21 19:27
- * 微信：yangguangfu520
- * QQ号：541433511
- * 作用：常用框架Fragment
+ *
+ * 作用：蓝牙模块
  */
 public class CommonFrameFragment extends BaseFragment implements View.OnClickListener{
 
