@@ -8,10 +8,11 @@
 
 
     <TextView
+        android:id="@+id/left_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="25px"
-        android:text="微信"
+        android:text="沉淀时光"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 
