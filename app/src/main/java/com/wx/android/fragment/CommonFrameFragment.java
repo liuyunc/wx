@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wx.android.EcgActivity;
+import com.wx.android.HeartActivity;
 import com.wx.android.R;
 import com.wx.android.adapter.CommonFrameFragmentAdapter;
 import com.wx.android.base.BaseFragment;
@@ -466,11 +467,11 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
                 intent = new Intent(getActivity(), EcgActivity.class);
                 startActivity(intent);
                 break;
-             /** case R.id.btn_two:
+              case R.id.btn_two:
                 intent = new Intent(getActivity(), HeartActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.btn_three:
+              /** case R.id.btn_three:
                 intent = new Intent(getActivity(), OxygenActivity.class);
                 startActivity(intent);
                 break;

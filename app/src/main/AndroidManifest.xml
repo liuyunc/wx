@@ -36,6 +36,7 @@
 
         </activity>
         <activity android:name=".EcgActivity"></activity>
+        <activity android:name=".HeartActivity"></activity>
     </application>
 
 </manifest>

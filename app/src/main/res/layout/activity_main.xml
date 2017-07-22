@@ -39,7 +39,7 @@
             android:id="@+id/rb_common_frame"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_common_frame_drawable_selector"
-            android:text="微信"
+            android:text="手环"
 
             />
 
@@ -47,7 +47,7 @@
             android:id="@+id/rb_thirdparty"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_thirdparty_drawable_selector"
-            android:text="通讯录"
+            android:text="运动"
 
             />
 
@@ -55,7 +55,7 @@
             android:id="@+id/rb_custom"
             style="@style/bottom_tag_style"
             android:drawableTop="@drawable/rb_custom_drawable_selector"
-            android:text="发现" />
+            android:text="睡眠" />
 
         <RadioButton
             android:id="@+id/rb_other"

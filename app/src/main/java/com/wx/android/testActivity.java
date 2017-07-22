@@ -13,7 +13,7 @@ import com.wx.android.adapter.MFragmentPagerAdapter;
 import com.wx.android.base.BaseFragment;
 import com.wx.android.fragment.CommonFrameFragment;
 import com.wx.android.fragment.CustomFragment;
-import com.wx.android.fragment.OtherFragment;
+import com.wx.android.fragment.setFragment;
 import com.wx.android.fragment.ThirdPartyFragment;
 
 import java.util.ArrayList;
@@ -172,7 +172,7 @@ public class testActivity extends FragmentActivity {
         mBaseFragment.add(new CommonFrameFragment());//常用框架Fragment
         mBaseFragment.add(new ThirdPartyFragment());//第三方Fragment
         mBaseFragment.add(new CustomFragment());//自定义控件Fragment
-        mBaseFragment.add(new OtherFragment());//其他Fragment
+        mBaseFragment.add(new setFragment());//其他Fragment
 
 
     }

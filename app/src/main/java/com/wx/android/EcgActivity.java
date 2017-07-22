@@ -9,14 +9,17 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wx.android.Thread.PaintThread;
+import com.wx.android.fx.PagerLayout;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -68,12 +71,32 @@ public class EcgActivity extends Activity {
 
     private RelativeLayout back;
     private TextView title;
+    private View mView;
+
+    //上滑
+    private PagerLayout myLinearLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecg);
+
+        //上滑类
+        myLinearLayout = (PagerLayout) findViewById(R.id.lock_view);
+
+        myLinearLayout.setLayout(this, R.layout.slide_layout);
+        /*myLinearLayout.show();*/
+        //为fragment添加OnTouchListener监听器
+        //LayoutInflater factory = LayoutInflater.from(this);
+        //mView = factory.inflate(R.layout.activity_ecg, null);
+        /*mView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return mGestureDetector.onTouchEvent(event);
+            }
+        });*/
 
         //Recieve_count=(TextView)findViewById(R.id.Receive_count);
         LinearLayoutMain=(LinearLayout)findViewById(R.id.ecg);
@@ -82,6 +105,28 @@ public class EcgActivity extends Activity {
         dataCount = new int[count];
 
         surfaceView = (SurfaceView) findViewById(R.id.SurfaceViewId);
+        surfaceView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final float[] downY = {0};
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        downY[0] = event.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        float curY = event.getY();
+                        float delta = curY - downY[0];
+                        //int screen = DensityUtil.getWindowHeight(EcgActivity.this);
+                        //if (delta > screen - DensityUtil.dip2px(EcgActivity.this, 240)) {
+                        if(delta>0){
+                            myLinearLayout.show();
+                        }
+                        break;
+                }
+                return false;
+            }
+        });
+
         // 得到holder，为holder添加回调结构SurfaceHolder.Callback
         holder = surfaceView.getHolder();
         holder.addCallback(new MyCallBack());
@@ -324,5 +369,7 @@ public class EcgActivity extends Activity {
         }
 
     }
+
+
 
 }
