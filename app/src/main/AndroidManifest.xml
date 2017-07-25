@@ -37,7 +37,7 @@
         </activity>
         <activity android:name=".EcgActivity"></activity>
         <activity android:name=".HeartActivity"></activity>
-        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".FHistoryActivity"></activity>
     </application>
 
 </manifest>

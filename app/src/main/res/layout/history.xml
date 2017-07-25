@@ -14,18 +14,18 @@
         android:orientation="horizontal"
         >
         <Button
-            android:id="@+id/year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="年"
-            android:layout_weight="1">
-        </Button>
-
-        <Button
             android:id="@+id/month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="月"
+            android:layout_weight="1">
+        </Button>
+
+        <Button
+            android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="周"
             android:layout_weight="1">
         </Button>
 
@@ -37,11 +37,11 @@
             android:layout_weight="1">
         </Button>
     </LinearLayout>
-    <ListView
-        android:id="@+id/listView_history"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager_history"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_height="match_parent"
+        />
 
 
 

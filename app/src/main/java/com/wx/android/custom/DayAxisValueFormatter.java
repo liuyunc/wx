@@ -70,7 +70,7 @@ public class DayAxisValueFormatter implements IAxisValueFormatter
 
     private int getDaysForMonth(int month, int year) {
 
-        // month is 0-based
+        // monthFragment is 0-based
 
         if (month == 1) {
             boolean is29Feb = false;
