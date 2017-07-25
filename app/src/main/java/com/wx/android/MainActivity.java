@@ -2,6 +2,7 @@ package com.wx.android;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -18,8 +19,8 @@ import com.wx.android.adapter.MFragmentPagerAdapter;
 import com.wx.android.base.BaseFragment;
 import com.wx.android.fragment.CommonFrameFragment;
 import com.wx.android.fragment.CustomFragment;
-import com.wx.android.fragment.setFragment;
 import com.wx.android.fragment.ThirdPartyFragment;
+import com.wx.android.fragment.setFragment;
 import com.wx.android.fx.AddPopWindow;
 
 import java.util.ArrayList;
@@ -39,6 +40,9 @@ public class MainActivity  extends FragmentActivity {
     * 菜单
     * */
     private ImageView iv_add;
+
+    /**历史纪录*/
+    private ImageView iv_hisroty;
 
     private List<BaseFragment> mBaseFragment;
     /**
@@ -82,6 +86,16 @@ public class MainActivity  extends FragmentActivity {
             }
 
         });
+        iv_hisroty=(ImageView) this.findViewById(R.id.iv_search);
+        iv_hisroty.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
+            });
+
 
     }
 
