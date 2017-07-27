@@ -100,7 +100,7 @@ public class ThirdPartyFragment extends BaseFragment {
     @Override
     protected View initView() {
         Log.e(TAG,"第三方Fragment页面被初始化了...");
-        View view = View.inflate(mContext, R.layout.activity_heart,null);
+        View view = View.inflate(mContext, R.layout.activity_sport,null);
         mringView =(RingView) view.findViewById(R.id.ringView);
         mText = (TextView) view.findViewById(R.id.hrtextView);
         mListView = (ListView) view.findViewById(R.id.listview_hr);

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/common_top_bar_blue"
+    android:background="@color/top_bar_normal_bg"
     android:layout_alignParentRight="true"
     >
 
@@ -18,11 +18,11 @@
 
     <ImageView
         android:id="@+id/iv_search"
-        android:layout_width="25dp"
+        android:layout_width="58dp"
         android:layout_height="match_parent"
         android:clickable="true"
         android:layout_toLeftOf="@+id/iv_add"
-        android:src="@drawable/icon_search" />
+        android:src="@drawable/ic_main_view_health_history" />
 
     <ImageView
         android:id="@+id/iv_add"

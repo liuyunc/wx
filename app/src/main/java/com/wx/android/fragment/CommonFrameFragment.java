@@ -33,6 +33,8 @@ import com.wx.android.HeartActivity;
 import com.wx.android.R;
 import com.wx.android.adapter.CommonFrameFragmentAdapter;
 import com.wx.android.base.BaseFragment;
+import com.wx.android.oxygenActivity;
+import com.wx.android.pressureActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -471,14 +473,14 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
                 intent = new Intent(getActivity(), HeartActivity.class);
                 startActivity(intent);
                 break;
-              /** case R.id.btn_three:
-                intent = new Intent(getActivity(), OxygenActivity.class);
+               case R.id.btn_three:
+                intent = new Intent(getActivity(), oxygenActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_four:
-                intent = new Intent(getActivity(), PressureActivity.class);
+                intent = new Intent(getActivity(), pressureActivity.class);
                 startActivity(intent);
-                break;*/
+                break;
 
             case R.id.iv_open:
                 if (!mBluetoothAdapter.isEnabled()) {

@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:gravity="center"
-            android:text="心   率"
+            android:text="血  压"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:layout_centerHorizontal="true" />
@@ -45,7 +45,7 @@
             android:id="@+id/startHeartBeatTest"
             android:layout_width="180dp"
             android:layout_height="30dp"
-            android:text="测量心率"
+            android:text="测量血压"
             android:textColor="@android:color/white"
             android:textSize="15sp"
             android:layout_alignParentBottom="true"

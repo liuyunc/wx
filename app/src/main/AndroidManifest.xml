@@ -37,6 +37,8 @@
         </activity>
         <activity android:name=".EcgActivity"></activity>
         <activity android:name=".HeartActivity"></activity>
+        <activity android:name=".oxygenActivity"></activity>
+        <activity android:name=".pressureActivity"></activity>
         <activity android:name=".FHistoryActivity"></activity>
     </application>
 
